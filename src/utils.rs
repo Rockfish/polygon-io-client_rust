@@ -8,7 +8,7 @@
 
 use std::collections::HashMap;
 
-pub fn params_to_query_string(params: HashMap<String, String>) -> String {
+pub fn params_to_query_string(params: &HashMap<String, String>) -> String {
     let mut query = String::new();
     for (key, value) in params {
         if !query.is_empty() {
