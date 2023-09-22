@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 
+use crate::common::{Market, Order};
 use crate::rest_client::RequestType;
 use serde::Deserialize;
 use std::collections::HashMap;
@@ -211,55 +212,8 @@ impl RequestType for TickersRequest {
     }
 }
 
-pub enum Locale {
-    US,
-    Global,
-}
-
-impl fmt::Display for Locale {
-    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        match self {
-            Locale::US => write!(f, "us"),
-            Locale::Global => write!(f, "global"),
-        }
-    }
-}
-
-pub enum Order {
-    Asc,
-    Desc,
-}
-
-impl fmt::Display for Order {
-    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        match self {
-            Order::Asc => write!(f, "asc"),
-            Order::Desc => write!(f, "desc"),
-        }
-    }
-}
-
-pub enum Market {
-    Stocks,
-    Crypto,
-    FX,
-    OTC,
-    Indices,
-}
-
-impl fmt::Display for Market {
-    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        match self {
-            Market::Stocks => write!(f, "stocks"),
-            Market::Crypto => write!(f, "crypto"),
-            Market::FX => write!(f, "fx"),
-            Market::OTC => write!(f, "otc"),
-            Market::Indices => write!(f, "indices"),
-        }
-    }
-}
-
 #[allow(non_camel_case_types)]
+#[derive(Debug)]
 pub enum TickersSort {
     Ticker,
     Name,
@@ -280,22 +234,6 @@ pub enum TickersSort {
 
 impl fmt::Display for TickersSort {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        match self {
-            TickersSort::Ticker => write!(f, "stocks"),
-            TickersSort::Name => write!(f, "name"),
-            TickersSort::Market => write!(f, "market"),
-            TickersSort::Locale => write!(f, "locale"),
-            TickersSort::Primary_Exchange => write!(f, "primary_exchange"),
-            TickersSort::Type => write!(f, "type"),
-            TickersSort::Currency_Symbol => write!(f, "currency_symbol"),
-            TickersSort::Currency_Name => write!(f, "currency_name"),
-            TickersSort::Base_Currency_Symbol => write!(f, "base_currency_symbol"),
-            TickersSort::Base_Currency_Name => write!(f, "base_currency_name"),
-            TickersSort::Cik => write!(f, "cik"),
-            TickersSort::Composite_Figi => write!(f, "composite_figi"),
-            TickersSort::Share_Class_Fig => write!(f, "share_class_fig"),
-            TickersSort::Last_Updated_Utc => write!(f, "last_updated_utc"),
-            TickersSort::Deslisted_Utc => write!(f, "deslisted_utc"),
-        }
+        write!(f, "{}", format!("{:?}", &self).to_lowercase())
     }
 }

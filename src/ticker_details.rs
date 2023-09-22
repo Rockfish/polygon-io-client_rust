@@ -1,6 +1,6 @@
 use crate::rest_client::*;
-use std::collections::HashMap;
 use serde::Deserialize;
+use std::collections::HashMap;
 use time::Date;
 
 /// /v3/reference/tickers/{ticker}
@@ -48,6 +48,7 @@ impl RequestType for TickerDetailsRequest {
     }
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 pub struct TickerDetailsResponse {
     request_id: String,
@@ -55,6 +56,7 @@ pub struct TickerDetailsResponse {
     status: String,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 pub struct TickerDetailsResult {
     #[serde(default = "bool::default")]
@@ -109,6 +111,7 @@ pub struct TickerDetailsResult {
     source_feed: String,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 pub struct Address {
     #[serde(default = "String::default")]
@@ -121,6 +124,7 @@ pub struct Address {
     postal_code: String,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 pub struct Branding {
     #[serde(default = "String::default")]

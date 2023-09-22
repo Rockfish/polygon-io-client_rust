@@ -17,3 +17,6 @@ tokio = { version = "1.32.0", features = ["full"] }
 
 [[example]]
 name = "tickers_example"
+
+[[example]]
+name = "ticker_news"

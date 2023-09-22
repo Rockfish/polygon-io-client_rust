@@ -1,7 +1,9 @@
+pub mod common;
 pub mod polygon_client;
 pub mod rest_client;
 pub mod ticker_details;
 pub mod ticker_events;
+pub mod ticker_news;
 pub mod tickers;
 pub mod utils;
 

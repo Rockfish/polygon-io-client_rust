@@ -1,4 +1,3 @@
-
 pub trait RequestType {
     fn get_url(&self) -> String;
     fn get_query(&self) -> Vec<(&String, &String)>;
@@ -12,7 +11,6 @@ pub struct RestClient {
 
 impl RestClient {
     pub fn new(api_url: impl Into<String>, auth_key: impl Into<String>, timeout: Option<core::time::Duration>) -> Result<Self, String> {
-
         let mut client = reqwest::ClientBuilder::new();
 
         if let Some(timeout) = timeout {
@@ -27,8 +25,8 @@ impl RestClient {
     }
 
     pub(crate) async fn send_request<ResponseType>(&self, request: &impl RequestType) -> Result<ResponseType, reqwest::Error>
-        where
-            ResponseType: serde::de::DeserializeOwned,
+    where
+        ResponseType: serde::de::DeserializeOwned,
     {
         let uri = request.get_url();
         let query_params = request.get_query();
