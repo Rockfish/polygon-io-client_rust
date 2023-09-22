@@ -20,3 +20,6 @@ name = "tickers_example"
 
 [[example]]
 name = "ticker_news"
+
+[[example]]
+name = "dividends_example"

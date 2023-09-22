@@ -1,3 +1,4 @@
+use crate::dividends::{DividendRequest, DividendsResponse};
 use crate::rest_client::RestClient;
 use crate::ticker_details::{TickerDetailsRequest, TickerDetailsResponse};
 use crate::ticker_news::{TickerNewsRequest, TickerNewsResponse};
@@ -50,5 +51,11 @@ impl PolygonClient {
     /// [/v2/reference/news](https://polygon.io/docs/stocks/get_v2_reference_news)
     pub async fn get_ticker_news(&self, request: &TickerNewsRequest) -> Result<TickerNewsResponse, reqwest::Error> {
         self.client.send_request::<TickerNewsResponse>(request).await
+    }
+
+    // Get a list of historical cash dividends, including the ticker symbol, declaration date, ex-dividend date, record date, pay date, frequency, and amount.
+    /// [/v3/reference/dividends](https://polygon.io/docs/stocks/get_v3_reference_dividends)
+    pub async fn get_dividends(&self, request: &DividendRequest) -> Result<DividendsResponse, reqwest::Error> {
+        self.client.send_request::<DividendsResponse>(request).await
     }
 }
