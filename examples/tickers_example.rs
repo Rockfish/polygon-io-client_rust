@@ -5,7 +5,7 @@ use time::macros::date;
 
 #[tokio::main]
 async fn main() {
-    let poly_client = PolygonClient::new(None, None).unwrap();
+    let poly_client = PolygonClientBuilder::new().auth_key_env("POLYGON_AUTH_KEY").build().unwrap();
 
     let request = TickersRequest::new()
         .ticker("AAPL")
@@ -16,16 +16,16 @@ async fn main() {
         .sort(TickersSort::Name);
 
     println!("Request: {:#?}", request);
+
     let results = poly_client.get_tickers(&request).await;
+
     println!("results: {results:#?}\n");
 
     let request = TickerDetailsRequest::new().ticker("BP").date(date!(2023 - 06 - 28));
 
     println!("Request: {:#?}", request);
-    let results = poly_client.get_tickers_details(&request).await;
-    println!("results: {results:#?}\n");
 
-    // let text = format!("{:?}", TickersSort::Primary_Exchange).to_lowercase();
-    let text = TickersSort::Primary_Exchange.to_string();
-    println!("{text}");
+    let results = poly_client.get_tickers_details(&request).await;
+
+    println!("results: {results:#?}\n");
 }

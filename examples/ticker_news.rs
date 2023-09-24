@@ -1,10 +1,10 @@
 use polygon_io_client_rust::common::Order;
-use polygon_io_client_rust::polygon_client::PolygonClient;
+use polygon_io_client_rust::polygon_client::PolygonClientBuilder;
 use polygon_io_client_rust::ticker_news::{TickerNewsRequest, TickerNewsSort};
 
 #[tokio::main]
 async fn main() {
-    let poly_client = PolygonClient::new(None, None).unwrap();
+    let poly_client = PolygonClientBuilder::new().auth_key_env("POLYGON_AUTH_KEY").build().unwrap();
 
     let request = TickerNewsRequest::new()
         .ticker("AAPL")
@@ -15,5 +15,5 @@ async fn main() {
 
     let results = poly_client.get_ticker_news(&request).await;
 
-    println!("results: {results:#?}\n");
+    println!("results: {:#?}", results);
 }

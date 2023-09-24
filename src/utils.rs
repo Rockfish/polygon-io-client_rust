@@ -14,9 +14,9 @@ pub fn params_to_query_string(params: &HashMap<String, String>) -> String {
         if !query.is_empty() {
             query.push('&')
         }
-        query.push_str(&key);
+        query.push_str(key);
         query.push('=');
-        query.push_str(&value);
+        query.push_str(value);
     }
     query
 }

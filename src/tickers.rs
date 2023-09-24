@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use crate::common::{Market, Order};
+pub use crate::common::{Market, Order};
 use crate::rest_client::RequestType;
 use serde::Deserialize;
 use std::collections::HashMap;
@@ -9,7 +9,7 @@ use std::fmt::Formatter;
 use time::Date;
 
 /// https://polygon.io/docs/stocks/get_v3_reference_tickers
-const TICKERS_PATH: &'static str = "/v3/reference/tickers";
+const TICKERS_PATH: &str = "/v3/reference/tickers";
 
 #[derive(Debug, Deserialize)]
 pub struct TickersResponse {

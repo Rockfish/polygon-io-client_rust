@@ -1,10 +1,10 @@
 use polygon_io_client_rust::common::Order;
 use polygon_io_client_rust::dividends::{DividendFrequency, DividendRequest, DividendSort};
-use polygon_io_client_rust::polygon_client::PolygonClient;
+use polygon_io_client_rust::polygon_client::PolygonClientBuilder;
 
 #[tokio::main]
 async fn main() {
-    let poly_client = PolygonClient::new(None, None).unwrap();
+    let poly_client = PolygonClientBuilder::new().auth_key_env("POLYGON_AUTH_KEY").build().unwrap();
 
     let request = DividendRequest::new()
         .ticker("AAPL")

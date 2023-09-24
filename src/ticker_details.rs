@@ -7,7 +7,7 @@ use time::Date;
 /// Get a single ticker supported by Polygon.io.
 /// This response will have detailed information about the ticker and the company behind it.
 
-const TICKER_DETAILS_PATH: &'static str = "/v3/reference/tickers/{ticker}";
+const TICKER_DETAILS_PATH: &str = "/v3/reference/tickers/{ticker}";
 
 #[derive(Debug)]
 pub struct TickerDetailsRequest {
